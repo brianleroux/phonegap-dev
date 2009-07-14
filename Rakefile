@@ -4,12 +4,12 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "phonegap-dev"
+    gem.name = "phonegap"
     gem.summary = %Q{TODO}
     gem.email = "brian@westcoastlogic.com"
     gem.homepage = "http://github.com/brianleroux/phonegap-dev"
     gem.authors = ["Brian LeRoux"]
-    gem.rubyforge_project = "phonegap-dev"
+    gem.rubyforge_project = "phonegap"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
@@ -51,7 +51,7 @@ Rake::RDocTask.new do |rdoc|
   end
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "phonegap-dev #{version}"
+  rdoc.title = "phonegap #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

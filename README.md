@@ -1,6 +1,6 @@
 PhoneGap Developer 
 ===
-Command line utilities for PhoneGap. 
+Command line utilities for PhoneGap:
 
 - app generation
 - app packaging
@@ -32,8 +32,6 @@ TODO
 - check for specific versions of iphone, android and bb in the report and build
 - gemify
 - add shoulda tests
-
----
 
 Copyright (c) 2009 Brian LeRoux. Licensed under the MIT License:
 http://www.opensource.org/licenses/mit-license.php
