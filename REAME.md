@@ -1,5 +1,5 @@
 PhoneGap Developer 
-==================
+===
 Command line utilities for PhoneGap. 
 
 - app generation
@@ -7,13 +7,13 @@ Command line utilities for PhoneGap.
 - system reporting
 
 Usage
------
-phonegap --generate path/to/MyFreshApp 
-phonegap --build path/to/MyFreshApp
-phonegap --report path/to/MyFreshApp
+---
+	phonegap --generate path/to/MyFreshApp 
+	phonegap --build path/to/MyFreshApp
+	phonegap --report path/to/MyFreshApp
 
 Options
--------
+---
 	-h, --help ......... Displays help message.
 	-v, --version  ..... Display the version and then exit.
 	-g, --generate ..... Generates a PhoneGap application skeleton. 
@@ -21,7 +21,7 @@ Options
 	-r, --report ....... Generates a report for supported SDK's.
 	
 TODO
-----
+---
 - make executable chmod +x phonegap.rb
 - install phonegap source into ~/.phonegap using git if available
 - make bootstrap.js useful 
@@ -34,5 +34,6 @@ TODO
 - add shoulda tests
 
 ---
+
 Copyright (c) 2009 Brian LeRoux. Licensed under the MIT License:
 http://www.opensource.org/licenses/mit-license.php
