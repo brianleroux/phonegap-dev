@@ -1,0 +1,7 @@
+= phonegap-dev
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Brian LeRoux. See LICENSE for details.
