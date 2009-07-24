@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+%w(optparse optparse/time ostruct pp FileUtils phonegap).each { |x| require x }
+#
+# Wraps the command line and passes switches and options back to the PhoneGap class.
+# 
+class PhoneGapConsole
+  def self.parse(args)
+    p = PhoneGap.new
+    
+    opts = OptionParser.new do |opts|
+      b = <<-E
+      
+      PhoneGap #{ p.version }
+      --------------
+      Usage: phonegap [options]
+      
+      E
+      opts.banner = b.gsub("      ","")
+
+      opts.on("-g", "--generate PATH", "Generates a new PhoneGap application skeleton.") do |path|
+        puts p.generate(path)
+        exit
+      end
+      
+      opts.on("-b", "--build PATH", "Compiles your PhoneGapp application for supported platforms.") do |path|
+        puts p.build(path)
+        exit
+      end 
+      
+      opts.on("-r", "--report", "Generates a report for supported SDK's.") do
+        puts p.report
+        exit
+      end
+      
+      opts.on_tail("-h", "--help", "Display this message.") do
+        puts "#{ opts }\n"
+        exit
+      end
+      
+      opts.on_tail("-v", "--version", "Display the version.") do
+        puts p.version
+        exit
+      end
+   end
+   opts.parse!(args)
+   #options
+ end  
+end 
+
+pp PhoneGapConsole.parse(ARGV)
