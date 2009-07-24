@@ -1,4 +1,4 @@
-%w(ftools FileUtils devices/android devices/iphone devices/blackberry).each { |x| require x  }
+%w(devices/android devices/iphone devices/blackberry).each { |x| require x  }
 #
 # Provides utilities for generating a PhoneGap application and unifies the build process for each of the supported mobile platforms.
 #
@@ -21,7 +21,9 @@ class PhoneGap
   
   # creates an app skeleton
   def generate(path)
-    `cp -rf generate #{path}`   
+    generate_path = File.join(Dir.pwd,path)
+    template_path = File.join(File.dirname(__FILE__),'generate')
+    `cp -rf #{ template_path} #{ generate_path }`   
     e=<<-E
     
     Generated a fresh PhoneGap application! 

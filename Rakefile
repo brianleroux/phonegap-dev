@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "phonegap"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{Command line utilities for PhoneGap.}
     gem.email = "brian@westcoastlogic.com"
     gem.homepage = "http://github.com/brianleroux/phonegap-dev"
     gem.authors = ["Brian LeRoux"]

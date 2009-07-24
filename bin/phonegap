@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-%w(optparse optparse/time ostruct pp FileUtils phonegap).each { |x| require x }
+%w(optparse optparse/time ostruct pp phonegap).each { |x| require x }
 #
 # Wraps the command line and passes switches and options back to the PhoneGap class.
 # 
@@ -43,8 +43,7 @@ class PhoneGapConsole
       end
    end
    opts.parse!(args)
-   #options
  end  
 end 
 
-pp PhoneGapConsole.parse(ARGV)
+PhoneGapConsole.parse(ARGV)
