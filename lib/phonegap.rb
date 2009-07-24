@@ -14,16 +14,21 @@ class PhoneGap
     '0.7.0'
   end 
   
-  # helper for getting the install path of phonegap 
+  # grab install path of the phonegap sauce 
   def install_path
     File.expand_path('~/.phonegap')
   end 
+  
+  # check for the phonegap sauce
+  def has_phonegap_sauce?
+    File.exists?(install_path)
+  end
   
   # creates an app skeleton
   def generate(path)
     generate_path = File.join(Dir.pwd,path)
     template_path = File.join(File.dirname(__FILE__),'generate')
-    `cp -rf #{ template_path} #{ generate_path }`   
+    FileUtils.cp_r(template_path, generate_path)  
     e=<<-E
     
     Generated a fresh PhoneGap application! 
@@ -44,7 +49,7 @@ class PhoneGap
        |
        '- index.html
        
-    For more information, tutorials, documentation and quickstarts go to http://phonegap.com
+    For more information, tutorials, documentation and quickstarts visit http://phonegap.com
     
     E
     trim(e)
