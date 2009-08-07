@@ -11,6 +11,7 @@ begin
     gem.authors = ["Brian LeRoux"]
     gem.rubyforge_project = "phonegap"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency('rubyzip')
   end
 
   Jeweler::RubyforgeTasks.new
