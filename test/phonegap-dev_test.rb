@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class PhonegapDevTest < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
-  end
+  context "A PhoneGap instance" do
+    setup do
+      @p = PhoneGap.new
+    end 
+  
+    should "be an expected version" do
+      assert_equal @p.version, '0.7.4'
+    end
+  
+    should "install phonegap sauce" do
+      @p.install_phonegap_sauce
+      assert_equal true, File.exists?(File.expand_path('~/.phonegap'))
+    end
+  end 
+  # 
 end

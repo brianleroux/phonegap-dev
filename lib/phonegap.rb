@@ -31,7 +31,7 @@ class PhoneGap
     until found 
       host, port = url.host, url.port if url.host && url.port 
       req = Net::HTTP::Get.new(url.path) 
-      res = Net::HTTP.start(host, port) {|http| http.request(req) } 
+      res = Net::HTTP.start(host, port) {|http|  http.request(req) } 
       res.header['location'] ? url = URI.parse(res.header['location']) : 
       found = true 
     end
@@ -39,7 +39,8 @@ class PhoneGap
     zip_path = File.join(install_path, 'phonegap.zip')
     final_path = File.join(install_path, version.gsub('.','-'))
     open(zip_path, 'w+') {|f| f.write(res.body) }
-    unzip(zip_path, final_path)
+    unzip(zip_path, install_path)
+    File.mv File.expand_path("~/.phonegap/sintaxi-phonegap-2cd1b85903695b55626d95da117477200be8b57a"), File.expand_path("~/.phonegap/#{version.gsub('.','-')}")
   end
   
   # creates an app skeleton
@@ -102,13 +103,14 @@ class PhoneGap
     str.gsub('    ','')
   end 
   
-  def unzip(file, destination)
+  def unzip(file, destination)  
     Zip::ZipFile.open(file) do |zip_file|
       zip_file.each do |f|
-        #f_path=File.join(destination, f.name)
+        f_path = File.join(destination, f.name)
         FileUtils.mkdir_p(File.dirname(f_path))
         zip_file.extract(f, f_path) unless File.exist?(f_path)
       end
     end
   end
+  #
 end 
