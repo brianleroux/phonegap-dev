@@ -14,6 +14,9 @@ class PhonegapDevTest < Test::Unit::TestCase
       @p.install_phonegap_sauce
       assert_equal true, File.exists?(File.expand_path('~/.phonegap'))
     end
+    
+    should "generate a phonegap project"
+    should "build a phonegap project for the iphone"
   end 
   # 
 end

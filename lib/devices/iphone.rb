@@ -5,16 +5,18 @@ module Iphone
   end 
   
   # builds the iphone using xcode, FIXME should use open toolchain
-  def build_iphone(path_to_build)
-    if iphone_supported? && has_phonegap_sauce?
+  def build_iphone(path_to_build, debug=true)
+    if iphone_supported?
+      conf = {'Release'=>'iphoneos3.0','Debug'=>'iphonesimulator3.0'}
       FileUtils.mkdir_p(path_to_build) 
       www_local = File.join(path_to_build,'www')
-      www_build = File.join(install_path,'iphone')
-      puts '\building for iphone...\n'
-      puts "copying #{www_local} to #{www_build}...#{`cp -r #{www_local} #{www_build}`}\n"
-      # Debug, Release
-      conf = {'Release'=>'iphoneos3.0','Debug'=>'iphonesimulator3.0'}
-      puts `cd #{www_build}; /usr/bin/xcodebuild -alltargets -configuration Debug -sdk #{conf['Debug']}`
+      www_build = File.join(full_install_path,'iphone')
+      puts "Building for iPhone...\n"
+      puts "Copying #{www_local} to #{www_build}...#{`cp -r #{www_local} #{www_build}`}\n"
+      puts `cd #{www_build}; /usr/bin/xcodebuild -alltargets -configuration Debug -sdk #{debug ? conf['Debug'] : conf['Release']}`
+      if debug
+        `iphonesim launch #{ www_build } 3.0`
+      end
     else
       puts 'skipping iphone build: iphone sdk not installed or phonegap source not in ~/.phonegap'
     end 

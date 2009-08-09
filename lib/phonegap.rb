@@ -19,6 +19,10 @@ class PhoneGap
     File.expand_path('~/.phonegap')
   end 
   
+  def full_install_path
+    File.join install_path, version.gsub('.','-')
+  end
+  
   # check for the phonegap sauce
   def has_phonegap_sauce?
     File.exists?(install_path)

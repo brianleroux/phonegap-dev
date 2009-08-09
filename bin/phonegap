@@ -22,6 +22,11 @@ class PhoneGapConsole
         exit
       end
       
+      opts.on("-i", '--install', "Installs PhoneGap source #{ p.version } into ~/.phonegap") do 
+        puts p.install_phonegap_sauce
+        exit
+      end
+      
       opts.on("-b", "--build PATH", "Compiles your PhoneGapp application for supported platforms.") do |path|
         puts p.build(path)
         exit

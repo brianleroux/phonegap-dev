@@ -1,0 +1,3 @@
+[submodule "lib/platforms"]
+	path = lib/platforms
+	url = git://github.com/sintaxi/phonegap.git

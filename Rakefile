@@ -12,6 +12,7 @@ begin
     gem.rubyforge_project = "phonegap"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency('rubyzip')
+    gem.executables = ["phonegap","iphonesim"]
   end
 
   Jeweler::RubyforgeTasks.new
