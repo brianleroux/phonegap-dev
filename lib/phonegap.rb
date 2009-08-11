@@ -9,43 +9,14 @@ class PhoneGap
   include Blackberry
   
   # outputs the current version of PhoneGap 
-  # FIXME needs to pull from sauce repo found at install path
   def version
-    '0.7.4'
+    '0.7.4' # FIXME needs to know which version is being submoduled in
   end 
   
-  # grab install path of the phonegap sauce 
-  def install_path
-    File.expand_path('~/.phonegap')
+  # path to the actual PhoneGap platforms source
+  def platform_path
+    File.join(File.dirname(__FILE__),'platforms/')
   end 
-  
-  def full_install_path
-    File.join install_path, version.gsub('.','-')
-  end
-  
-  # check for the phonegap sauce
-  def has_phonegap_sauce?
-    File.exists?(install_path)
-  end
-  
-  # downloads the latest version and puts it in install_path/version
-  def install_phonegap_sauce
-    url = URI.parse("http://github.com/sintaxi/phonegap/zipball/#{ version }/")
-    found = false 
-    until found 
-      host, port = url.host, url.port if url.host && url.port 
-      req = Net::HTTP::Get.new(url.path) 
-      res = Net::HTTP.start(host, port) {|http|  http.request(req) } 
-      res.header['location'] ? url = URI.parse(res.header['location']) : 
-      found = true 
-    end
-    FileUtils.mkdir_p(install_path)
-    zip_path = File.join(install_path, 'phonegap.zip')
-    final_path = File.join(install_path, version.gsub('.','-'))
-    open(zip_path, 'w+') {|f| f.write(res.body) }
-    unzip(zip_path, install_path)
-    File.mv File.expand_path("~/.phonegap/sintaxi-phonegap-2cd1b85903695b55626d95da117477200be8b57a"), File.expand_path("~/.phonegap/#{version.gsub('.','-')}")
-  end
   
   # creates an app skeleton
   def generate(path)
@@ -106,15 +77,5 @@ class PhoneGap
   def trim(str)
     str.gsub('    ','')
   end 
-  
-  def unzip(file, destination)  
-    Zip::ZipFile.open(file) do |zip_file|
-      zip_file.each do |f|
-        f_path = File.join(destination, f.name)
-        FileUtils.mkdir_p(File.dirname(f_path))
-        zip_file.extract(f, f_path) unless File.exist?(f_path)
-      end
-    end
-  end
   #
 end 

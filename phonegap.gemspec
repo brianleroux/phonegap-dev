@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{phonegap}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian LeRoux"]
-  s.date = %q{2009-08-07}
+  s.date = %q{2009-08-10}
   s.email = %q{brian@westcoastlogic.com}
   s.executables = ["phonegap", "iphonesim"]
   s.extra_rdoc_files = [
@@ -19,10 +19,12 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     ".gitmodules",
      "LICENSE",
      "README.md",
      "Rakefile",
      "VERSION",
+     "bin/iphonesim",
      "bin/phonegap",
      "lib/devices/android.rb",
      "lib/devices/blackberry.rb",
